@@ -26,27 +26,49 @@ type game = {
   name: string,
   sometext: string,
   img: string,
+  url: string
 }
 type skill = {
   name: string,
   icon: SimpleIcon
 }
 
-const projects = [
+type project = {
+  name: string,
+  description: string,
+  link: string,
+  stack: SimpleIcon[],
+  stackStrings?: string[],
+}
+
+const projects: project[] = [
   {
     name: 'Lightcode',
     description: 'A terminal coding agent written in golang for performance.',
     link: 'https://github.com/Kartik-2239/lightcode',
+    stack: [siGo],
+    stackStrings: ['golang', 'http server', 'bubbletea', 'charm', 'sqlite', 'openai go sdk']
   },
   {
     name: 'Ai Chats Forker',
     description: 'A browser extension that allows you to fork and continue chats in between websites like chatgpt, claude and gmeini',
     link: 'https://github.com/Kartik-2239/ai-chats-forker',
+    stack: [siTypescript],
+    stackStrings: ['typescript','chrome extension', 'wxt']
+  },
+  {
+    name: 'Dosye',
+    description: 'A cli tool to count specific words you used while talking to ai agents like opencode, codex etc.',
+    link: 'https://github.com/Kartik-2239/dosye',
+    stack: [siTypescript],
+    stackStrings: ['typescript', 'cli', 'inquirer']
   },
   {
     name: 'Open-neuro',
     description: 'A neuro sama clone because its so cool.',
     link: 'https://github.com/Kartik-2239/open-neuro',
+    stack: [siTypescript, siPython],
+    stackStrings: ['typescript', 'python', 'ai sdk', 'vts sdk', 'websockets', 'huggingface']
   },
 ]
 
@@ -73,21 +95,25 @@ const games: game[] = [
     name: 'Minecraft',
     sometext: 'I play minecraft regularly and have been since 2020',
     img: './minecraft.jpg',
+    url: "https://www.minecraft.net/en-us"
   },
   {
     name: 'Pokemon Legends ZA',
     sometext: 'Really good but the map was small',
     img: './plza.png',
+    url: "https://legends.pokemon.com/en-us/"
   },
   {
     name: 'Pokemon Legends Arceus',
     sometext: 'One of the best pokemon games.',
     img: './pla.jpg',
+    url: "https://legends.arceus.pokemon.com/en-us/"
   },
   {
     name: 'Legends of Zelda: BOTW',
     sometext: 'Masterpiece',
     img: './botw.jpg',
+    url: "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/"
   }
 ]
 
@@ -134,12 +160,27 @@ export default function App() {
 
           <section id='projects' className='flex flex-col gap-1'>
             <p className='font-bold mb-2 text-foreground'>projects</p>
+            <div className='flex flex-col gap-4'>
             {projects.map((project) => (
-              <div key={project.name}>
-                <p><a href={project.link} target='_blank' rel='noopener noreferrer' className='underline'>{project.name}</a></p>
-                <p>{project.description}</p>
-              </div>
+              <div key={project.name} className='flex flex-col gap-1'>
+                <div className='flex flex-row gap-2'>
+                  <p>
+                    <div className='flex flex-row gap-2 items-center'>
+                      <a href={project.link} target='_blank' rel='noopener noreferrer' className='underline'>{project.name}</a>
+                    </div>
+                  </p>
+                  <div className='flex flex-row'>
+                    {project.stackStrings?.map((tech, index) => (
+                      <div key={index} className='flex items-center bg-muted text-foreground px-2 py-1 rounded-xl border-border border cursor-pointer gap-1 mr-2 hover:bg-accent'>
+                        <span className='text-xs'>{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              <p>{project.description}</p>
+            </div>
             ))}
+            </div>
           </section>
 
           <section id='skills' className='flex flex-col gap-1'>
@@ -234,7 +275,7 @@ export default function App() {
               <div key={game.name} className='flex flex-row gap-2'>
                 <img src={game.img} alt={game.name} className='w-16 h-16 object-cover rounded-md' />
                 <div className='flex flex-col justify-center'>
-                  <p className='underline'>{game.name}</p>
+                  <a href={game.url} target='_blank' rel='noopener noreferrer' className='underline'>{game.name}</a>
                   <p>{game.sometext}</p>
                 </div>
               </div>
