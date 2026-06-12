@@ -137,7 +137,6 @@ export default function App() {
       setIsDarkMode(window.matchMedia(query).matches);
       window.matchMedia(query).matches ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
     }
-    // document.getElementsByTagName('html')[0].classList.add('dark')
   }, [])
   return (
     <div className='w-screen min-h-screen bg-background text-muted-foreground font-mono'>
@@ -163,18 +162,19 @@ export default function App() {
             <div className='flex flex-col gap-4'>
             {projects.map((project) => (
               <div key={project.name} className='flex flex-col gap-1'>
-                <div className='flex flex-row gap-2'>
+                <div className='flex flex-col gap-2'>
                   <p>
                     <div className='flex flex-row gap-2 items-center'>
                       <a href={project.link} target='_blank' rel='noopener noreferrer' className='underline'>{project.name}</a>
                     </div>
                   </p>
-                  <div className='flex flex-row'>
-                    {project.stackStrings?.map((tech, index) => (
-                      <div key={index} className='flex items-center bg-muted text-foreground px-2 py-1 rounded-xl border-border border cursor-pointer gap-1 mr-2 hover:bg-accent'>
+                  <div className='flex flex-row w-full gap-2'>
+                    {/* tech used: {project.stackStrings?.join(', ')} */}
+                    {/* {project.stackStrings?.map((tech, index) => (
+                      <div key={index} className='w-20 h-10 flex items-center bg-muted text-foreground px-2 py-1 rounded-xl border-border border cursor-pointer gap-1 mr-2 hover:bg-accent'>
                         <span className='text-xs'>{tech}</span>
                       </div>
-                    ))}
+                    ))} */}
                   </div>
                 </div>
               <p>{project.description}</p>
