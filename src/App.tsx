@@ -6,7 +6,6 @@ import {
   siTypescript,
   siJavascript,
   siPython,
-  siHtml5,
   siReact,
   siNextdotjs,
   siNodedotjs,
