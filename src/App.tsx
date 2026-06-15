@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import MusicPlayer from './components/music-player'
+import type { anime, game, skill, socials, project } from './types'
+import { Socials } from './components/socials'
 
 import {
   siGo,
@@ -15,31 +17,7 @@ import {
   siGmail,
   type SimpleIcon
 } from 'simple-icons'
-
-type anime = {
-  name: string,
-  sometext: string,
-  rating: number,
-}
-
-type game = {
-  name: string,
-  sometext: string,
-  img: string,
-  url: string
-}
-type skill = {
-  name: string,
-  icon: SimpleIcon
-}
-
-type project = {
-  name: string,
-  description: string,
-  link: string,
-  stack: SimpleIcon[],
-  stackStrings?: string[],
-}
+import ParticleContainer from './components/particle-container'
 
 const projects: project[] = [
   {
@@ -128,6 +106,23 @@ const skills: skill[] = [
   { name: 'fastapi', icon: siFastapi },
 ]
 
+const socials_list : socials[] = [
+  {
+    name: 'email',
+    link: 'mailto:kartikkannan22@gmail.com',
+    icon: siGmail,
+  },
+  {
+    name: 'github',
+    link: 'https://github.com/Kartik-2239',
+    icon: siGithub,
+  },
+  {
+    name: 'x',
+    link: 'https://x.com/notkartikk',
+    icon: siX,
+  }
+]
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -140,79 +135,39 @@ export default function App() {
   }, [])
   return (
     <div className='w-screen min-h-screen bg-background text-muted-foreground font-mono'>
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
       <div className='w-full flex justify-center'>
-        <div className='max-w-[700px] w-full px-6 py-12 flex flex-col gap-10'>
+        <div className='max-w-[900px] w-full pb-12 flex flex-col border-x border-border'>
 
-          <section id='Name' className='flex flex-row gap-4 items-center'>
-            <div className='flex flex-col'>
-              <h1 className='font-bold text-4xl text-foreground'>Kartik</h1>
+          <section id="particles" className='w-full border-b border-t border-border px-6 py-8'>
+              <ParticleContainer></ParticleContainer>
+          </section>
+
+          <section id='Name' className='flex flex-row gap-4 items-center border-b border-border px-6 py-8'>
+            <div className='flex flex-row gap-8 items-center'>
+              {/* <div className='border border-1 border-border rounded-md overflow-hidden'>
+                <img src="./profile.jpg" alt="Profile" className='w-20 rounded-sm'/>
+              </div> */}
+              <MusicPlayer></MusicPlayer>
+              <div className='flex flex-col'>
+                <h1 className='font-bold font-pixel text-4xl text-foreground'>Kartik</h1>
+                <h1 className='font-bold font-pixel text-2xl text-foreground'>software developer</h1>
+                <Socials socials={socials_list}></Socials>
+              </div>
+              
             </div>
           </section>
 
-          <section id='about' className='flex flex-col gap-1'>
-            <p className='font-bold mb-2 text-foreground'>about</p>
-            <p>i am a hobbyist software developer.</p>
-            <p>i really like building projects.</p>
-            <p>i also like watching anime and playing Minecraft and Pokemon.</p>
+          <section id='about' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>about</p>
+            <p>i really like building projects</p>
+            <p>and learning about new things :)</p>
+            <p>i also like watching anime.</p>
           </section>
 
-          <section id='projects' className='flex flex-col gap-1'>
-            <p className='font-bold mb-2 text-foreground'>projects</p>
-            <div className='flex flex-col gap-4'>
-            {projects.map((project) => (
-              <div key={project.name} className='flex flex-col gap-1'>
-                <div className='flex flex-col gap-2'>
-                  <p>
-                    <div className='flex flex-row gap-2 items-center'>
-                      <a href={project.link} target='_blank' rel='noopener noreferrer' className='underline'>{project.name}</a>
-                    </div>
-                  </p>
-                  <div className='flex flex-row w-full gap-2'>
-                    {/* tech used: {project.stackStrings?.join(', ')} */}
-                    {/* {project.stackStrings?.map((tech, index) => (
-                      <div key={index} className='w-20 h-10 flex items-center bg-muted text-foreground px-2 py-1 rounded-xl border-border border cursor-pointer gap-1 mr-2 hover:bg-accent'>
-                        <span className='text-xs'>{tech}</span>
-                      </div>
-                    ))} */}
-                  </div>
-                </div>
-              <p>{project.description}</p>
-            </div>
-            ))}
-            </div>
-          </section>
-
-          <section id='skills' className='flex flex-col gap-1'>
-            <p className='font-bold mb-2 text-foreground'>skills</p>
-            <div className='flex flex-row flex-wrap gap-4'>
-              {skills.map((skill) => {
-                const icon = skill.icon
-                const isBlack = icon.hex === '000000'
-                return (
-                  <div key={skill.name} className='flex items-center bg-muted text-foreground px-3 py-2 rounded-xl border-border border cursor-pointer gap-2 hover:bg-accent'>
-                    <svg
-                      role="img"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      fill={isBlack && isDarkMode ? `#ffffff` : `#${icon.hex}`}
-                      className="w-4 h-4"
-                    >
-                      <path d={icon.path} />
-                    </svg>
-                    <span className='text-sm font-bold'>{skill.name}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </section>
-
-          <section id='socials' className='flex flex-col gap-1'>
-            <p className='font-bold mb-2 text-foreground'>socials</p>
+          {/* <section id='socials' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>socials</p>
             <div className='flex flex-row gap-4'>
-              {/* <p><a href='mailto:kartikkannan22@gmail.com' className='underline'>mail</a></p>
-              <p><a href='https://github.com/Kartik-2239' className='underline'>github</a></p> */}
               <a href='mailto:kartikkannan22@gmail.com' target='_blank' rel='noopener noreferrer' className='flex items-center bg-muted text-foreground px-3 py-2 rounded-xl border-border border cursor-pointer gap-2 hover:bg-accent'>
                 <svg
                   role="img"
@@ -253,14 +208,65 @@ export default function App() {
                 <span className='text-sm font-bold'>Twitter</span>
               </a>
             </div>
+          </section> */}
+
+          <section id='projects' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>projects</p>
+            <div className='flex flex-col gap-4'>
+            {projects.map((project) => (
+              <div key={project.name} className='flex flex-col gap-1'>
+                <div className='flex flex-col gap-2'>
+                  <p>
+                    <div className='flex flex-row gap-2 items-center'>
+                      <a href={project.link} target='_blank' rel='noopener noreferrer' className='underline font-pixel'>{project.name}</a>
+                    </div>
+                  </p>
+                  <div className='flex flex-row w-full gap-2'>
+                    {/* tech used: {project.stackStrings?.join(', ')} */}
+                    {/* {project.stackStrings?.map((tech, index) => (
+                      <div key={index} className='w-20 h-10 flex items-center bg-muted text-foreground px-2 py-1 rounded-xl border-border border cursor-pointer gap-1 mr-2 hover:bg-accent'>
+                        <span className='text-xs'>{tech}</span>
+                      </div>
+                    ))} */}
+                  </div>
+                </div>
+              <p>{project.description}</p>
+            </div>
+            ))}
+            </div>
           </section>
 
-          <section id='anime' className='flex flex-col gap-1'>
-            <p className='font-bold mb-2 text-foreground'>animes i like</p>
+          <section id='skills' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>skills</p>
+            <div className='flex flex-row flex-wrap gap-4'>
+              {skills.map((skill) => {
+                const icon = skill.icon
+                const isBlack = icon.hex === '000000'
+                return (
+                  <div key={skill.name} className='flex items-center bg-muted text-foreground px-3 py-2 rounded-sm border-border border-0 cursor-pointer gap-2 hover:bg-accent'>
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      fill={isBlack && isDarkMode ? `#ffffff` : `#${icon.hex}`}
+                      className="w-4 h-4"
+                    >
+                      <path d={icon.path} />
+                    </svg>
+                    <span className='text-sm font-bold'>{skill.name}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </section>
+
+          <section id='anime' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>animes i like</p>
             {animes.map((anime) => (
               <div key={anime.name}>
                 <div className='flex flex-row gap-2'>
-                  <p className='underline'>{anime.name}</p>
+                  <p className='underline font-pixel'>{anime.name}</p>
                   <p>: {anime.sometext}</p>
                   <span>({anime.rating}/10)</span>
                 </div>
@@ -269,13 +275,13 @@ export default function App() {
             <p>And a lot more niche animes...</p>
           </section>
 
-          <section id='games' className='flex flex-col gap-1'>
-            <p className='font-bold mb-2 text-foreground'>games i like</p>
+          <section id='games' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+            <p className='font-pixel mb-2 text-foreground uppercase'>games i like</p>
             {games.map((game) => (
               <div key={game.name} className='flex flex-row gap-2'>
                 <img src={game.img} alt={game.name} className='w-16 h-16 object-cover rounded-md' />
                 <div className='flex flex-col justify-center'>
-                  <a href={game.url} target='_blank' rel='noopener noreferrer' className='underline'>{game.name}</a>
+                  <a href={game.url} target='_blank' rel='noopener noreferrer' className='underline font-pixel'>{game.name}</a>
                   <p>{game.sometext}</p>
                 </div>
               </div>
