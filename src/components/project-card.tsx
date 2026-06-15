@@ -40,7 +40,7 @@ export default function ProjectCard({ project, isDarkMode }: projectCardProps) {
         <p className='text-sm'>{project.description}</p>
         <div className='flex flex-row flex-wrap gap-2'>
           {project.stackStrings?.map((tech, index) => (
-            <span key={index} className='text-xs bg-muted text-muted-foreground px-2 py-1 rounded border border-border'>
+            <span key={index} className='text-xs bg-muted text-muted-foreground px-2 py-1 rounded border-0 border-border'>
               {tech}
             </span>
           ))}

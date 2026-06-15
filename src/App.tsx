@@ -138,31 +138,35 @@ const socials_list : socials[] = [
 ]
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  // useEffect(() => {
+  //   const query = '(prefers-color-scheme: dark)';
+  //   if (typeof window !== 'undefined') {
+  //     setIsDarkMode(window.matchMedia(query).matches);
+  //     window.matchMedia(query).matches ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+  //   }
+  // }, [])
   useEffect(() => {
-    const query = '(prefers-color-scheme: dark)';
-    if (typeof window !== 'undefined') {
-      setIsDarkMode(window.matchMedia(query).matches);
-      window.matchMedia(query).matches ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
-    }
-  }, [])
+    setIsDarkMode(true)
+    document.documentElement.classList.add('dark')
+  },[])
   return (
     <div className='w-screen min-h-screen bg-background text-muted-foreground font-mono'>
       {/* <MusicPlayer /> */}
       <div className='w-full flex justify-center'>
         <div className='max-w-[900px] w-full mx-4 md:mx-auto my-0 pb-12 flex flex-col border-x border-border'>
 
-          <section id="particles" className='w-full border-b border-t border-border'>
+          <section id="particles" className='w-full border-b border-t border-border bg-black'>
               <ParticleContainer></ParticleContainer>
           </section>
 
-          <section id='Name' className='flex flex-row gap-4 items-center border-b border-border px-6 py-8'>
+          <section id='Name' className='flex flex-row gap-4 items-center border-b border-border px-3 py-4 md:px-6 md:py-8'>
             <div className='flex flex-row gap-8 items-center'>
               {/* <div className='border border-1 border-border rounded-md overflow-hidden'>
                 <img src="./profile.jpg" alt="Profile" className='w-20 rounded-sm'/>
               </div> */}
               <MusicPlayer></MusicPlayer>
-              <div className='flex flex-col'>
+              <div className='flex flex-col gap-2'>
                 <h1 className='font-bold font-pixel text-2xl md:text-4xl text-foreground'>Kartik</h1>
                 <h1 className='font-bold font-pixel text-xl md:text-2xl text-foreground'>software developer</h1>
                 <Socials socials={socials_list}></Socials>
@@ -171,14 +175,14 @@ export default function App() {
             </div>
           </section>
 
-          <section id='about' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+          <section id='about' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
             <p className='font-bold font-pixel mb-2 text-foreground uppercase'>about</p>
             <p>i really like building projects</p>
             <p>and learning about new things :)</p>
             <p>i also like watching anime.</p>
           </section>
 
-          <section id='skills' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+          <section id='skills' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
             <p className='font-bold font-pixel mb-2 text-foreground uppercase'>skills</p>
             <div className='flex flex-row flex-wrap gap-4'>
               {skills.map((skill) => {
@@ -203,16 +207,16 @@ export default function App() {
             </div>
           </section>
 
-          <section id='projects' className='flex flex-col gap-1 border-b border-border'>
-            <p className='font-bold font-pixel text-foreground uppercase px-6 py-3'>projects</p>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 px-6 pb-8'>
+          <section id='projects' className='flex flex-col gap-4 border-b border-border px-3 py-4 md:px-6 md:py-8' >
+            <p className='font-bold font-pixel text-foreground uppercase '>projects</p>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 '>
               {projects.map((project) => (
                 <ProjectCard key={project.name} project={project} isDarkMode={isDarkMode} />
               ))}
             </div>
           </section>
 
-          <section id='anime' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+          <section id='anime' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
             <p className='font-bold font-pixel mb-2 text-foreground uppercase'>animes i like</p>
             {animes.map((anime) => (
               <div key={anime.name}>
@@ -224,7 +228,7 @@ export default function App() {
             <p>And a lot more niche animes...</p>
           </section>
 
-          <section id='games' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
+          <section id='games' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
             <p className='font-pixel mb-2 text-foreground uppercase'>games i like</p>
             {games.map((game) => (
               <div key={game.name} className='flex flex-row gap-2'>
