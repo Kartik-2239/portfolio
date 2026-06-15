@@ -1,4 +1,3 @@
-import { siGmail } from "simple-icons"
 import type { socials } from "../types"
 
 export function Socials({socials}: {socials: socials[]}) {

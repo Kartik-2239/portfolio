@@ -15,15 +15,16 @@ import {
   siX,
   siGithub,
   siGmail,
-  type SimpleIcon
 } from 'simple-icons'
 import ParticleContainer from './components/particle-container'
+import ProjectCard from './components/project-card'
 
 const projects: project[] = [
   {
     name: 'Lightcode',
     description: 'A terminal coding agent written in golang for performance.',
     link: 'https://github.com/Kartik-2239/lightcode',
+    video: '',
     stack: [siGo],
     stackStrings: ['golang', 'http server', 'bubbletea', 'charm', 'sqlite', 'openai go sdk']
   },
@@ -31,6 +32,7 @@ const projects: project[] = [
     name: 'Ai Chats Forker',
     description: 'A browser extension that allows you to fork and continue chats in between websites like chatgpt, claude and gmeini',
     link: 'https://github.com/Kartik-2239/ai-chats-forker',
+    video: '',
     stack: [siTypescript],
     stackStrings: ['typescript','chrome extension', 'wxt']
   },
@@ -38,6 +40,7 @@ const projects: project[] = [
     name: 'Dosye',
     description: 'A cli tool to count specific words you used while talking to ai agents like opencode, codex etc.',
     link: 'https://github.com/Kartik-2239/dosye',
+    video: './dosye.mov',
     stack: [siTypescript],
     stackStrings: ['typescript', 'cli', 'inquirer']
   },
@@ -45,6 +48,7 @@ const projects: project[] = [
     name: 'Open-neuro',
     description: 'A neuro sama clone because its so cool.',
     link: 'https://github.com/Kartik-2239/open-neuro',
+    video: '',
     stack: [siTypescript, siPython],
     stackStrings: ['typescript', 'python', 'ai sdk', 'vts sdk', 'websockets', 'huggingface']
   },
@@ -210,29 +214,12 @@ export default function App() {
             </div>
           </section> */}
 
-          <section id='projects' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
-            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>projects</p>
-            <div className='flex flex-col gap-4'>
-            {projects.map((project) => (
-              <div key={project.name} className='flex flex-col gap-1'>
-                <div className='flex flex-col gap-2'>
-                  <p>
-                    <div className='flex flex-row gap-2 items-center'>
-                      <a href={project.link} target='_blank' rel='noopener noreferrer' className='underline font-pixel'>{project.name}</a>
-                    </div>
-                  </p>
-                  <div className='flex flex-row w-full gap-2'>
-                    {/* tech used: {project.stackStrings?.join(', ')} */}
-                    {/* {project.stackStrings?.map((tech, index) => (
-                      <div key={index} className='w-20 h-10 flex items-center bg-muted text-foreground px-2 py-1 rounded-xl border-border border cursor-pointer gap-1 mr-2 hover:bg-accent'>
-                        <span className='text-xs'>{tech}</span>
-                      </div>
-                    ))} */}
-                  </div>
-                </div>
-              <p>{project.description}</p>
-            </div>
-            ))}
+          <section id='projects' className='flex flex-col gap-1 border-b border-border'>
+            <p className='font-bold font-pixel text-foreground uppercase px-6 py-3'>projects</p>
+            <div className='grid grid-cols-2 gap-4 px-6 pb-8'>
+              {projects.map((project) => (
+                <ProjectCard key={project.name} project={project} isDarkMode={isDarkMode} />
+              ))}
             </div>
           </section>
 

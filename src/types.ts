@@ -28,6 +28,7 @@ export type project = {
   name: string,
   description: string,
   link: string,
+  video: string,
   stack: SimpleIcon[],
   stackStrings?: string[],
 }
