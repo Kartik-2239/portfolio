@@ -17,13 +17,9 @@ export default function ProjectCard({ project, isDarkMode }: projectCardProps) {
   }, [])
 
   return (
-    <div className='flex flex-col gap-3 border border-border rounded-sm p-2'>
-      <div className='w-full h-64 bg-muted rounded-lg overflow-hidden flex items-center justify-center'>
-        {project.video ? (
-          <video ref={videoRef} src={project.video} className='w-full h-full object-fit' autoPlay loop muted playsInline />
-        ) : (
-          <span className='text-muted-foreground text-sm'>Project Video</span>
-        )}
+    <div className='flex flex-col gap-3 border border-border rounded-sm'>
+      <div className='w-full h-48 md:h-64 bg-muted rounded-sm overflow-hidden flex items-center justify-center'>
+        <ImageOrVideo videoSrc={project.video} imageSrc={project.image} />
       </div>
       <div className='flex flex-col gap-2 p-2'>
         <div className='flex items-center justify-between'>
@@ -52,4 +48,22 @@ export default function ProjectCard({ project, isDarkMode }: projectCardProps) {
       </div>
     </div>
   )
+}
+
+function ImageOrVideo({ videoSrc, imageSrc }: { videoSrc?: string; imageSrc?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 2
+    }
+  }, [])
+
+  if (videoSrc) {
+    return <video ref={videoRef} src={videoSrc} className='w-full h-full object-fit' autoPlay loop muted playsInline />
+  } else if (imageSrc) {
+    return <img src={imageSrc} alt='Project media' className='w-full h-full object-contain'/>
+  } else {
+    return <span className='text-muted-foreground text-sm'>No media available</span>
+  }
 }

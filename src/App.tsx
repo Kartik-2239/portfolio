@@ -24,7 +24,7 @@ const projects: project[] = [
     name: 'Lightcode',
     description: 'A terminal coding agent written in golang for performance.',
     link: 'https://github.com/Kartik-2239/lightcode',
-    video: '',
+    image: './lightcode.jpg',
     stack: [siGo],
     stackStrings: ['golang', 'http server', 'bubbletea', 'charm', 'sqlite', 'openai go sdk']
   },
@@ -32,7 +32,7 @@ const projects: project[] = [
     name: 'Ai Chats Forker',
     description: 'A browser extension that allows you to fork and continue chats in between websites like chatgpt, claude and gmeini',
     link: 'https://github.com/Kartik-2239/ai-chats-forker',
-    video: '',
+    image: './ai-chats-forker.jpg',
     stack: [siTypescript],
     stackStrings: ['typescript','chrome extension', 'wxt']
   },
@@ -40,18 +40,27 @@ const projects: project[] = [
     name: 'Dosye',
     description: 'A cli tool to count specific words you used while talking to ai agents like opencode, codex etc.',
     link: 'https://github.com/Kartik-2239/dosye',
-    video: './dosye.mov',
+    // video: './dosye.mp4',
+    image: './dosye.jpg',
     stack: [siTypescript],
     stackStrings: ['typescript', 'cli', 'inquirer']
   },
   {
-    name: 'Open-neuro',
-    description: 'A neuro sama clone because its so cool.',
-    link: 'https://github.com/Kartik-2239/open-neuro',
-    video: '',
+    name: 'Code-x-blocker',
+    description: "A typescript project to block twitter when codex isn't running.",
+    link: 'https://github.com/Kartik-2239/code-x-blocker',
+    video: './code-x-blocker.mp4',
     stack: [siTypescript, siPython],
-    stackStrings: ['typescript', 'python', 'ai sdk', 'vts sdk', 'websockets', 'huggingface']
+    stackStrings: ['typescript', 'chrome extension', 'javascript', 'websockets']
   },
+  // {
+  //   name: 'Open-neuro',
+  //   description: 'A neuro sama clone because its so cool.',
+  //   link: 'https://github.com/Kartik-2239/open-neuro',
+  //   video: '',
+  //   stack: [siTypescript, siPython],
+  //   stackStrings: ['typescript', 'python', 'ai sdk', 'vts sdk', 'websockets', 'huggingface']
+  // },
 ]
 
 const animes: anime[] = [
@@ -141,9 +150,9 @@ export default function App() {
     <div className='w-screen min-h-screen bg-background text-muted-foreground font-mono'>
       {/* <MusicPlayer /> */}
       <div className='w-full flex justify-center'>
-        <div className='max-w-[900px] w-full pb-12 flex flex-col border-x border-border'>
+        <div className='max-w-[900px] w-full mx-4 md:mx-auto my-0 pb-12 flex flex-col border-x border-border'>
 
-          <section id="particles" className='w-full border-b border-t border-border px-6 py-8'>
+          <section id="particles" className='w-full border-b border-t border-border'>
               <ParticleContainer></ParticleContainer>
           </section>
 
@@ -154,8 +163,8 @@ export default function App() {
               </div> */}
               <MusicPlayer></MusicPlayer>
               <div className='flex flex-col'>
-                <h1 className='font-bold font-pixel text-4xl text-foreground'>Kartik</h1>
-                <h1 className='font-bold font-pixel text-2xl text-foreground'>software developer</h1>
+                <h1 className='font-bold font-pixel text-2xl md:text-4xl text-foreground'>Kartik</h1>
+                <h1 className='font-bold font-pixel text-xl md:text-2xl text-foreground'>software developer</h1>
                 <Socials socials={socials_list}></Socials>
               </div>
               
@@ -167,60 +176,6 @@ export default function App() {
             <p>i really like building projects</p>
             <p>and learning about new things :)</p>
             <p>i also like watching anime.</p>
-          </section>
-
-          {/* <section id='socials' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
-            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>socials</p>
-            <div className='flex flex-row gap-4'>
-              <a href='mailto:kartikkannan22@gmail.com' target='_blank' rel='noopener noreferrer' className='flex items-center bg-muted text-foreground px-3 py-2 rounded-xl border-border border cursor-pointer gap-2 hover:bg-accent'>
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  fill={`#${siGmail.hex}`}
-                  className="w-4 h-4"
-                >
-                  <path d={siGmail.path} />
-                </svg>
-                <span className='text-sm font-bold'>Email</span>
-              </a>
-              <a href='https://github.com/Kartik-2239' target='_blank' rel='noopener noreferrer' className='flex items-center bg-muted text-foreground px-3 py-2 rounded-xl border-border border cursor-pointer gap-2 hover:bg-accent'>
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  fill={!isDarkMode ? `#${siGithub.hex}` : `#ffffff`}
-                  className="w-4 h-4"
-                >
-                  <path d={siGithub.path} />
-                </svg>
-                <span className='text-sm font-bold'>Github</span>
-              </a>
-              <a href='https://x.com/notkartikk' target='_blank' rel='noopener noreferrer' className='flex items-center bg-muted text-foreground px-3 py-2 rounded-xl border-border border cursor-pointer gap-2 hover:bg-accent'>
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  fill={!isDarkMode ? `#${siX.hex}` : `#ffffff`}
-                  className="w-4 h-4"
-                >
-                  <path d={siX.path} />
-                </svg>
-                <span className='text-sm font-bold'>Twitter</span>
-              </a>
-            </div>
-          </section> */}
-
-          <section id='projects' className='flex flex-col gap-1 border-b border-border'>
-            <p className='font-bold font-pixel text-foreground uppercase px-6 py-3'>projects</p>
-            <div className='grid grid-cols-2 gap-4 px-6 pb-8'>
-              {projects.map((project) => (
-                <ProjectCard key={project.name} project={project} isDarkMode={isDarkMode} />
-              ))}
-            </div>
           </section>
 
           <section id='skills' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
@@ -248,14 +203,21 @@ export default function App() {
             </div>
           </section>
 
+          <section id='projects' className='flex flex-col gap-1 border-b border-border'>
+            <p className='font-bold font-pixel text-foreground uppercase px-6 py-3'>projects</p>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 px-6 pb-8'>
+              {projects.map((project) => (
+                <ProjectCard key={project.name} project={project} isDarkMode={isDarkMode} />
+              ))}
+            </div>
+          </section>
+
           <section id='anime' className='flex flex-col gap-1 border-b border-border px-6 py-8'>
             <p className='font-bold font-pixel mb-2 text-foreground uppercase'>animes i like</p>
             {animes.map((anime) => (
               <div key={anime.name}>
                 <div className='flex flex-row gap-2'>
-                  <p className='underline font-pixel'>{anime.name}</p>
-                  <p>: {anime.sometext}</p>
-                  <span>({anime.rating}/10)</span>
+                  <p><span className='underline font-pixel'>{anime.name}</span>: {anime.sometext} <span>({anime.rating}/10)</span></p>
                 </div>
               </div>
             ))}

@@ -55,7 +55,7 @@ export default function MusicPlayer() {
                 }}
 				onMouseEnter={handleHover}
 				onMouseLeave={handleLeave}
-                className={"z-50 h-24 w-24 rounded-full border-2 p-1 border-border shadow-xl animate-spin [animation-duration:12s] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"}// + (isPlaying ? '' : ' hover:scale-105')}
+                className={"z-50 h-24 w-24 aspect-square rounded-full border-2 p-1 border-border shadow-xl animate-spin [animation-duration:12s] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"}// + (isPlaying ? '' : ' hover:scale-105')}
             >
 				<img ref={imageRef} src={"./rowlet.jpg"} alt='Profile music toggle' className='h-full w-full object-cover rounded-full duration-300 ease-in-out' />
 			</button>

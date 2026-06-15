@@ -36,7 +36,7 @@ const options: IParticlesProps["options"] = {
       type: "circle",
     },
     size: {
-      value: { min: 5, max: 3 },
+      value: { min: 3, max: 5 },
     },
     collisions:{
         enable: true,
@@ -58,7 +58,7 @@ const options: IParticlesProps["options"] = {
 export default function ParticleContainer() {
   return (
     <ParticlesProvider init={initParticles}>
-      <div className="relative h-64 w-full overflow-hidden">
+      <div className="relative h-24 md:h-48 w-full overflow-hidden">
         <Particles id="default-particles" className="pointer-events-none absolute inset-0" options={options} />
       </div>
     </ParticlesProvider>
