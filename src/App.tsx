@@ -15,6 +15,7 @@ import {
   siX,
   siGithub,
   siGmail,
+  siHuggingface
 } from 'simple-icons'
 import ParticleContainer from './components/particle-container'
 import ProjectCard from './components/project-card'
@@ -134,6 +135,11 @@ const socials_list : socials[] = [
     name: 'x',
     link: 'https://x.com/notkartikk',
     icon: siX,
+  },
+  {
+    name: 'huggingface',
+    link: 'https://huggingface.co/Kartik2203',
+    icon: siHuggingface
   }
 ]
 
@@ -225,7 +231,7 @@ export default function App() {
                 </div>
               </div>
             ))}
-            <p>And a lot more niche animes...</p>
+            <p>And a lot more animes...</p>
           </section>
 
           <section id='games' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
