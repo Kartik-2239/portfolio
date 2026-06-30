@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import MusicPlayer from './components/music-player'
-import type { anime, game, skill, socials, project } from './types'
+import type { anime, game, skill, socials, project, blog } from './types'
 import { Socials } from './components/socials'
 
 import {
@@ -15,10 +15,12 @@ import {
   siX,
   siGithub,
   siGmail,
-  siHuggingface
+  siHuggingface,
+  siMedium
 } from 'simple-icons'
 import ParticleContainer from './components/particle-container'
 import ProjectCard from './components/project-card'
+import { BlogCard } from './components/blog-card'
 
 const projects: project[] = [
   {
@@ -37,14 +39,23 @@ const projects: project[] = [
     stack: [siTypescript],
     stackStrings: ['typescript','chrome extension', 'wxt']
   },
+  // {
+  //   name: 'Dosye',
+  //   description: 'A cli tool to count specific words you used while talking to ai agents like opencode, codex etc.',
+  //   link: 'https://github.com/Kartik-2239/dosye',
+  //   // video: './dosye.mp4',
+  //   image: './dosye.jpg',
+  //   stack: [siTypescript],
+  //   stackStrings: ['typescript', 'cli', 'inquirer']
+  // },
   {
-    name: 'Dosye',
-    description: 'A cli tool to count specific words you used while talking to ai agents like opencode, codex etc.',
-    link: 'https://github.com/Kartik-2239/dosye',
+    name: 'voice-scraper',
+    description: 'A cli tool that finds and creates a joined clip of specific characters.',
+    link: 'https://github.com/Kartik-2239/voice-scraper',
     // video: './dosye.mp4',
-    image: './dosye.jpg',
+    image: './voice-scraper.png',
     stack: [siTypescript],
-    stackStrings: ['typescript', 'cli', 'inquirer']
+    stackStrings: ['typescript', 'cli', 'pyannote', 'ffmpeg', 'yt-dlp']
   },
   {
     name: 'Code-x-blocker',
@@ -140,6 +151,24 @@ const socials_list : socials[] = [
     name: 'huggingface',
     link: 'https://huggingface.co/Kartik2203',
     icon: siHuggingface
+  },
+  {
+    name: 'medium',
+    link: 'https://medium.com/@notkartik',
+    icon: siMedium
+  }
+]
+
+const blogs: blog[] = [
+  {
+    title: 'An AI tool to scrape voices of popular characters/people.',
+    description: 'Process of how my voice scraper project works.',
+    link: 'https://medium.com/@notkartik/an-ai-tool-to-scrape-voices-of-popular-characters-people-55653e8fb167'
+  },
+  {
+    title: 'What is electron? ',
+    description: 'A beginner friendly article about electron and how it works.',
+    link: 'https://medium.com/@notkartik/electron-363750b0f993'
   }
 ]
 
@@ -162,7 +191,7 @@ export default function App() {
       <div className='w-full flex justify-center'>
         <div className='max-w-[900px] w-full mx-4 md:mx-auto my-0 pb-12 flex flex-col border-x border-border'>
 
-          <section id="particles" className='w-full border-b border-t border-border bg-black'>
+          <section id="particles" className='w-full border-b pt-4 border-border bg-black'>
               <ParticleContainer></ParticleContainer>
           </section>
 
@@ -220,6 +249,15 @@ export default function App() {
                 <ProjectCard key={project.name} project={project} isDarkMode={isDarkMode} />
               ))}
             </div>
+          </section>
+
+          <section id='blogs' className='flex flex-col gap-4 border-b border-border px-3 py-4 md:px-6 md:py-8' >
+              <p className='font-bold font-pixel text-foreground uppercase '>blogs</p>
+              <div className='flex flex-col gap-4'>
+                {blogs.map((blog) => (
+                  <BlogCard key={blog.title} title={blog.title} description={blog.description} link={blog.link} />
+                ))}
+              </div>
           </section>
 
           <section id='anime' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>

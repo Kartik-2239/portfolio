@@ -33,3 +33,9 @@ export type project = {
   stack: SimpleIcon[],
   stackStrings?: string[],
 }
+
+export type blog = {
+  title: string,
+  description: string,
+  link: string
+}
