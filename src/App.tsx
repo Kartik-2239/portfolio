@@ -134,7 +134,7 @@ const skills: skill[] = [
 const socials_list : socials[] = [
   {
     name: 'email',
-    link: 'mailto:kartikkannan22@gmail.com',
+    link: 'mailto:hi@kartik.lol',
     icon: siGmail,
   },
   {
