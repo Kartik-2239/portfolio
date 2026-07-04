@@ -15,8 +15,9 @@ export type game = {
 
 export type skill = {
   name: string,
-  icon: SimpleIcon
+  icon?: SimpleIcon
 }
+
 
 export type socials = {
   name: string,

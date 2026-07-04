@@ -2,7 +2,7 @@ import type { socials } from "../types"
 
 export function Socials({socials}: {socials: socials[]}) {
     return (
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row flex-wrap gap-2">
             {socials.map((social) => (
                 <a
                     key={social.name}

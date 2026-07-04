@@ -4,6 +4,7 @@ import type { anime, game, skill, socials, project, blog } from './types'
 import { Socials } from './components/socials'
 
 import {
+  // skills
   siGo,
   siTypescript,
   siJavascript,
@@ -16,7 +17,11 @@ import {
   siGithub,
   siGmail,
   siHuggingface,
-  siMedium
+  siMedium,
+  // software i use
+  siNotion,
+  siGhostty,
+  siHeliumbrowser,
 } from 'simple-icons'
 import ParticleContainer from './components/particle-container'
 import ProjectCard from './components/project-card'
@@ -65,14 +70,6 @@ const projects: project[] = [
     stack: [siTypescript, siPython],
     stackStrings: ['typescript', 'chrome extension', 'javascript', 'websockets']
   },
-  // {
-  //   name: 'Open-neuro',
-  //   description: 'A neuro sama clone because its so cool.',
-  //   link: 'https://github.com/Kartik-2239/open-neuro',
-  //   video: '',
-  //   stack: [siTypescript, siPython],
-  //   stackStrings: ['typescript', 'python', 'ai sdk', 'vts sdk', 'websockets', 'huggingface']
-  // },
 ]
 
 const animes: anime[] = [
@@ -131,6 +128,15 @@ const skills: skill[] = [
   { name: 'fastapi', icon: siFastapi },
 ]
 
+// add tools that i use regularly for fun
+// ghostty, vscode, helium, notion etc
+const software_i_use: skill[] = [
+  { name: 'notion', icon: siNotion },
+  { name: 'vs code' },
+  { name: 'ghostty', icon: siGhostty },
+  { name: 'helium', icon: siHeliumbrowser }
+]
+
 const socials_list : socials[] = [
   {
     name: 'email',
@@ -186,7 +192,7 @@ export default function App() {
     document.documentElement.classList.add('dark')
   },[])
   return (
-    <div className='w-screen min-h-screen bg-background text-muted-foreground font-mono'>
+    <div className='w-full px-4 min-h-screen bg-background text-muted-foreground font-mono'>
       {/* <MusicPlayer /> */}
       <div className='w-full flex justify-center'>
         <div className='max-w-[900px] w-full mx-4 md:mx-auto my-0 pb-12 flex flex-col border-x border-border'>
@@ -195,15 +201,15 @@ export default function App() {
               <ParticleContainer></ParticleContainer>
           </section>
 
-          <section id='Name' className='flex flex-row gap-4 items-center border-b border-border px-3 py-4 md:px-6 md:py-8'>
-            <div className='flex flex-row gap-8 items-center'>
+          <section id='Name' className='border-b border-border px-3 py-4 md:px-6 md:py-8'>
+            <div className='flex w-full min-w-0 items-center gap-4 md:gap-8'>
               {/* <div className='border border-1 border-border rounded-md overflow-hidden'>
                 <img src="./profile.jpg" alt="Profile" className='w-20 rounded-sm'/>
               </div> */}
               <MusicPlayer></MusicPlayer>
-              <div className='flex flex-col gap-2'>
-                <h1 className='font-bold font-pixel text-2xl md:text-4xl text-foreground'>Kartik</h1>
-                <h1 className='font-bold font-pixel text-xl md:text-2xl text-foreground'>software developer</h1>
+              <div className='flex min-w-0 flex-1 flex-col gap-2'>
+                <h1 className='break-words font-bold font-pixel text-2xl text-foreground md:text-4xl'>Kartik</h1>
+                <h1 className='break-words font-bold font-pixel text-xl text-foreground md:text-2xl'>software developer</h1>
                 <Socials socials={socials_list}></Socials>
               </div>
               
@@ -222,7 +228,7 @@ export default function App() {
             <div className='flex flex-row flex-wrap gap-4'>
               {skills.map((skill) => {
                 const icon = skill.icon
-                const isBlack = icon.hex === '000000'
+                const isBlack = icon?.hex === '000000'
                 return (
                   <div key={skill.name} className='flex items-center bg-muted text-foreground px-3 py-2 rounded-sm border-border border-0 cursor-pointer gap-2 hover:bg-accent'>
                     <svg
@@ -230,10 +236,10 @@ export default function App() {
                       viewBox="0 0 24 24"
                       width="24"
                       height="24"
-                      fill={isBlack && isDarkMode ? `#ffffff` : `#${icon.hex}`}
+                      fill={isBlack && isDarkMode ? `#ffffff` : `#${icon?.hex}`}
                       className="w-4 h-4"
                     >
-                      <path d={icon.path} />
+                      <path d={icon?.path} />
                     </svg>
                     <span className='text-sm font-bold'>{skill.name}</span>
                   </div>
@@ -258,6 +264,31 @@ export default function App() {
                   <BlogCard key={blog.title} title={blog.title} description={blog.description} link={blog.link} />
                 ))}
               </div>
+          </section>
+
+          <section id='software-i-use' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
+            <p className='font-bold font-pixel mb-2 text-foreground uppercase'>software i use :)</p>
+            <div className='flex flex-row flex-wrap gap-4'>
+              {software_i_use.map((software) => {
+                const icon = software.icon
+                const isBlack = icon?.hex === '000000'
+                return (
+                  <div key={software.name} className='flex items-center bg-muted text-foreground px-3 py-2 rounded-sm border-border border-0 cursor-pointer gap-2 hover:bg-accent'>
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      fill={isBlack && isDarkMode ? `#ffffff` : `#${icon?.hex}`}
+                      className="w-4 h-4"
+                    >
+                      <path d={icon?.path} />
+                    </svg>
+                    <span className='text-sm font-bold'>{software.name}</span>
+                  </div>
+                )
+              })}
+            </div>
           </section>
 
           <section id='anime' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
