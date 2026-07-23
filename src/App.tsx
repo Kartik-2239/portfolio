@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import MusicPlayer from './components/music-player'
 import type { anime, game, skill, socials, project, blog } from './types'
 import { Socials } from './components/socials'
+// import GitHubContributionGraph from './components/github-graph'
 
 import {
   // skills
@@ -150,7 +151,7 @@ const socials_list : socials[] = [
   },
   {
     name: 'x',
-    link: 'https://x.com/notkartikk',
+    link: 'https://x.com/kartikdotlol',
     icon: siX,
   },
   {
@@ -222,6 +223,8 @@ export default function App() {
             <p>and learning about new things :)</p>
             <p>i also like watching anime.</p>
           </section>
+
+          {/* <GitHubContributionGraph username='Kartik-2239' /> */}
 
           <section id='skills' className='flex flex-col gap-1 border-b border-border px-3 py-4 md:px-6 md:py-8'>
             <p className='font-bold font-pixel mb-2 text-foreground uppercase'>skills</p>
